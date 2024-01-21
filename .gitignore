@@ -28,3 +28,8 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
+#
+*.jpg
+*.jpeg
+*.png

@@ -12,7 +12,7 @@ def set_gain_compensations(
 
     Args:
         images: Images of the panorama
-        pair_matches: Pair matches between the images
+        pair_matches: Pair matches between the images`
         sigma_n: Standard deviation of the normalized intensity error
         sigma_g: Standard deviation of the gain
     """
@@ -62,7 +62,8 @@ def set_gain_compensations(
 
         gains[:, channel] = np.linalg.solve(coefs, res)
 
-    max_pixel_value = np.max([image.image for image in images])
+    # !오류 발생 -> 사진의 가로 세로 크기가 다를 때
+    max_pixel_value = np.max([image.image for image in images]) 
 
     if gains.max() * max_pixel_value > 255:
         gains = gains / (gains.max() * max_pixel_value) * 255
